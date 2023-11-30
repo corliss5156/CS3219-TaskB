@@ -122,8 +122,8 @@ API requests require AWS credentials (Access Key ID and Secret Access Key) provi
 
 ### Tasks 
 - [x] CRUD operations for interaction with S3 
-- [] Testing API functions 
-- [] Automate testing
-- [] Frontend 
-- [] Frontend tests
-- [] Deployment 
+- [ ] Testing API functions 
+- [ ] Automate testing
+- [ ] Frontend 
+- [ ] Frontend tests
+- [ ] Deployment 
