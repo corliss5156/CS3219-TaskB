@@ -1,7 +1,7 @@
 // src/routes/s3Routes.js
 
 const multer = require('multer');
-const { uploadFile, listObjects, deleteObject } = require('../controller/s3controller');
+const { uploadFile, listObjects, deleteObject, getObject } = require('../controller/s3controller');
 
 
 const express = require('express')
@@ -15,5 +15,9 @@ router.post('/upload', upload.single('file'), uploadFile);
 router.get('/list', listObjects);
 
 // Route for deleting object in S3 bucket
-router.post('/delete/:objectKey', deleteObject)
+router.delete('/delete/:objectKey', deleteObject)
+
+//Route for getting an object in S3 bucket by object key
+router.get('/object', getObject)
+
 module.exports = router;

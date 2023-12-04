@@ -29,4 +29,15 @@ const deleteObjectInS3 = async(objectKey) => {
     
     return s3.deleteObject.promise()
 }
-module.exports = { uploadFileToS3, listObjectsInS3, deleteObjectInS3 };
+
+//Function to get object from S3 by object key 
+const getObjectInS3 = async(objectKey) => {
+  const params = {
+    Bucket: s3BucketName, 
+    Key: objectKey
+}
+  return s3.getObject(params).promise()
+
+}
+
+module.exports = { uploadFileToS3, listObjectsInS3, deleteObjectInS3, getObjectInS3 };

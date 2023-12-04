@@ -120,6 +120,30 @@ API requests require AWS credentials (Access Key ID and Secret Access Key) provi
 
     ```
 
+#### 4. Get Object by key
+- **Endpoint:** `GET /object/:objectKey`
+- **Description:** Get object from S3 bucket by object key 
+
+
+##### Request
+- **Method:** `DELETE`
+- **URL:** `/api/object/`
+- **Query Parameters** 
+ - `objectKey` (string, required): The key of the object to retrieve
+
+
+##### Response
+
+- **Status Code:** 200 OK
+- **Body:**
+  ```json
+    {
+     //Object data
+    }
+
+  ```
+
+
 ### Tasks 
 - [x] CRUD operations for interaction with S3 
 - [ ] Testing API functions 
