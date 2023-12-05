@@ -2,11 +2,11 @@
 const { s3, s3BucketName } = require('../config/config');
 
 // Function to upload a file to S3
-const uploadFileToS3 = async (fileKey, fileData) => {
+const uploadFileToS3 = async (objectKey, objectData) => {
   const params = {
     Bucket: s3BucketName,
-    Key: fileKey,
-    Body: fileData,
+    Key: objectKey,
+    Body: objectData,
   };
   
   return s3.upload(params).promise();
@@ -20,6 +20,7 @@ const listObjectsInS3 = async () => {
 
   return s3.listObjectsV2(params).promise();
 };
+
 // Function to delete object from S3
 const deleteObjectInS3 = async(objectKey) => {
     const params = {
