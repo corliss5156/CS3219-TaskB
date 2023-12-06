@@ -8,7 +8,8 @@ jest.mock('../src/s3/service')
 describe('Test s3 controller',() => {
     beforeEach(()=>{
         jest.clearAllMocks()
-        
+        const mockConsoleError = jest.fn()
+        console.error = mockConsoleError
     })
     afterEach(()=>{
         service.uploadFileToS3.mockRestore()
@@ -43,8 +44,7 @@ describe('Test s3 controller',() => {
             mockError.statusCode = 400
             mockError.code = 'Error message'
             
-            const mockConsoleError = jest.fn()
-            console.error = mockConsoleError
+            
 
             service.uploadFileToS3.mockImplementation(async () => {
                 throw mockError
@@ -74,10 +74,7 @@ describe('Test s3 controller',() => {
         test('Error in listing objects in S3 bucket', async () => {
             const mockError = new Error()
             mockError.statusCode = 400 
-            mockError.code = 'Error'
-
-            const mockConsoleError = jest.fn()
-            console.error = mockConsoleError
+            mockError.code = 'Error'      
 
             service.listObjectsInS3.mockImplementation(async ()=> {throw mockError})
             await s3Controller.listObjects(mockReq, mockRes)
@@ -102,9 +99,6 @@ describe('Test s3 controller',() => {
             mockError.statusCode = 400 
             mockError.code = 'Error in deleting object'
 
-            const mockConsoleError = jest.fn()
-            console.error = mockConsoleError
-
             service.deleteObjectInS3.mockImplementation(async ()=>{throw mockError})
             await s3Controller.deleteObject(mockReq, mockRes)
             expect(mockRes.status).toHaveBeenCalledWith(400)
@@ -125,9 +119,6 @@ describe('Test s3 controller',() => {
             const mockError = new Error()
             mockError.statusCode = 400 
             mockError.code = 'Error in getting object'
-            
-            const mockConsoleError = jest.fn()
-            console.error = mockConsoleError
             
             mockReq.query = {objectKey: faker.string.alphanumeric()}
             service.getObjectInS3.mockImplementation(async ()=>{throw mockError})
