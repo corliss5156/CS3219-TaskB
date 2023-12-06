@@ -6,19 +6,11 @@ const uploadFile = async (req, res) => {
   try {
     const { originalname, buffer } = req.file;
     const objectKey = `uploads/${originalname}`;
-
     await uploadFileToS3(objectKey, buffer);
-
     res.status(201).json({ message: 'File uploaded successfully' });
   } catch (error) {
-    try {
       console.error(error);
       res.status(error.statusCode).json({ error: error.code});  
-    }
-    catch {
-      res.status(500).json({error: 'Network error'})
-    }
-    
   }
 };
 
@@ -35,12 +27,8 @@ const listObjects = async (req, res) => {
 
     res.status(200).json(objects);
   } catch (error) {
-    try {
         console.error(error);
         res.status(error.statusCode).json({ error: error.code});
-    } catch {
-      res.status(500).json({error: 'Network error'})
-    }
    
   }
 };
@@ -54,12 +42,8 @@ const deleteObject = async(req, res) => {
 
     res.status(200).json(objectKey)
   } catch (error) {
-    try {
-      console.log(error); 
+      console.error(error); 
       res.status(error.statusCode).json({ error: error.code});
-    } catch {
-      res.status(500).json({error: 'Network error'})
-    }
   }
 }
 
@@ -70,12 +54,9 @@ const getObject = async (req, res) =>{
     const result = await getObjectInS3(objectKey); 
     res.status(200).json(result)
   } catch (error) {
-    try {
-      console.log(error)
+      console.error(error)
       res.status(error.statusCode).json({error: error.code})
-    } catch {
-      res.status(500).json({error: 'Network error'})
-    }
+
   }
 }
 module.exports = { uploadFile, listObjects, deleteObject, getObject };

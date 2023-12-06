@@ -28,7 +28,7 @@ const deleteObjectInS3 = async(objectKey) => {
         Key: objectKey
     }
     
-    return s3.deleteObject.promise()
+    return s3.deleteObject(params).promise()
 }
 
 //Function to get object from S3 by object key 
