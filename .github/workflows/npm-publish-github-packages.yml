@@ -22,18 +22,17 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps: 
-      name: deploy node app 
-      uses:  ubuntu-latest
-      env:  
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}} 
-        S3_BUCKET_NAME: ${{secrets.S3_BUCKET_NAME}}
-        PORT: ${{vars.PORT}}
-      run: |
-        echo "$AWS_ACCESS_KEY_ID"
-        echo "$AWS_SECRET_ACCESS_KEY"
-        echo "$S3_BUCKET_NAME"
-        echo "$PORT"
+      - name: deploy node app 
+        env:  
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}} 
+          S3_BUCKET_NAME: ${{secrets.S3_BUCKET_NAME}}
+          PORT: ${{vars.PORT}}
+        run: |
+          echo "$AWS_ACCESS_KEY_ID"
+          echo "$AWS_SECRET_ACCESS_KEY"
+          echo "$S3_BUCKET_NAME"
+          echo "$PORT"
         
         
       
