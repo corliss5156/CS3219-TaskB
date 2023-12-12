@@ -14,6 +14,7 @@ const uploadFileToS3 = async (objectKey, objectData) => {
 
 // Function to list objects in the S3 bucket
 const listObjectsInS3 = async () => {
+  
   const params = {
     Bucket: s3BucketName,
   };
