@@ -18,7 +18,7 @@ const uploadFile = async (req, res) => {
 const listObjects = async (req, res) => {
   try {
     const result = await listObjectsInS3();
-
+    console.log(result.Contents)
     const objects = result.Contents.map((object) => ({
       Key: object.Key,
       LastModified: object.LastModified,

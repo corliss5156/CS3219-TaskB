@@ -12,7 +12,8 @@ module.exports = {
     extend: {
       colors: {
         indigo: '#f5f8fe', 
-        blue: '#434ce8'
+        blue: '#434ce8', 
+        'light-blue': '#e2eeff'
       }
     },
   },
