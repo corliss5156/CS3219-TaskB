@@ -1,17 +1,19 @@
 'use client'
-import {useRef} from 'react'; 
+import {useRef, useState} from 'react'; 
 import { MdOutlineCloudUpload } from "react-icons/md";
-import { IconContext } from "react-icons";
 
-export default function UploadButton(){
+
+export default function UploadButton(props){
     const fileRef = useRef(null)
+    
 
     const handleFileClick = () =>{
         fileRef.current.click()
     }
     const handleFileChange = (e) =>{
-        const file = e.target.files[0]
-        if (file) {console.log(file)}
+        const selectedFile = e.target.files[0]
+        if (selectedFile) {props.handleSetFile(selectedFile)}
+
     }
     return (
         <div className='p-6 text-center cursor-pointer border-solid border rounded-lg border-gray-400 bg-indigo  lock '> 
@@ -28,7 +30,6 @@ export default function UploadButton(){
                     
                     
                 <p className='text-slate-400'>Click to upload file</p> 
-               
             </div> 
         </div> 
     )

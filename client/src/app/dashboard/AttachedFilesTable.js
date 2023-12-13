@@ -1,11 +1,16 @@
-'use client'
+import Delete from "./components/Delete"
 
-export default function AttachedFilesTable () {
-    const data = 
-        [{Key:"material_oh_reskill.azw",LastModified:"2023-12-05T08:02:50.000Z",Size:1},
-                {Key:"uploads/Chapter 319.docx",LastModified:"2023-11-30T06:55:42.000Z",Size:22209}]
+export async function getData() {
+  
+    const res = await fetch( "http://localhost:8000/api/list")
+    const data = await res.json()
+    return data
+  
     
-
+  }
+   
+export default async function  AttachedFilesTable () {
+    const data = await getData()
     
     return (
         <div className='border border-slate-400 rounded-lg my-8'>
@@ -27,8 +32,8 @@ export default function AttachedFilesTable () {
                         <tr key = {row.Key}>
                             <td className='text-black p-3.5'>{row.Key}</td>
                             <td className="text-slate-400 p-3.5">{row.LastModified}</td>
-                            <td className="text-slate-400 p-3.5">{row.Size}</td>
-                            <td>Delete</td>
+                            <td className="text-slate-400 p-3.5">{row.Size} kB</td>
+                            <td className='w-28'><Delete objectKey={row.Key}/> </td>
                         </tr>
                     )
                 })}
