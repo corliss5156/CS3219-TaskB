@@ -5,7 +5,7 @@ const { uploadFileToS3, listObjectsInS3, deleteObjectInS3, getObjectInS3 } = req
 const uploadFile = async (req, res) => {
   try {
     const { originalname, buffer } = req.file;
-    const objectKey = `uploads/${originalname}`;
+    const objectKey = `${originalname}`;
     await uploadFileToS3(objectKey, buffer);
     res.status(201).json({ message: 'File uploaded successfully' });
   } catch (error) {
@@ -59,4 +59,6 @@ const getObject = async (req, res) =>{
 
   }
 }
+
+
 module.exports = { uploadFile, listObjects, deleteObject, getObject };

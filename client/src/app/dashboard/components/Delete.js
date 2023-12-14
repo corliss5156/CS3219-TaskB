@@ -12,12 +12,13 @@ export default function Delete(props){
     const deleteFile = async () => {
      
         try {
-            const res = await fetch("http://localhost:8000/api" +`/delete/${props.objectKey}`, {
+            const res = await fetch( process.env.NEXT_PUBLIC_API_HOST  +`/delete/${props.objectKey}`, {
             method: "DELETE", 
             })
             if (res.ok) {
                 const deletedKey = await res.json()
                 console.log(`Object with object key ${deletedKey} deleted`)
+                props.handleSetDeleteData()
                 //Set state of parent to remove row from uI 
             } else {
                 const err = await res.json()

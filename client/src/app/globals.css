@@ -20,3 +20,16 @@
     border-radius: 0.5rem;
     width: 2.5rem; 
 }
+
+.loading {
+    animation: 4s loading-bar; 
+}
+
+@keyframes loading-bar {
+    from {
+        width: 0%; 
+    }
+    to {
+        width: 100%; 
+    }
+}
