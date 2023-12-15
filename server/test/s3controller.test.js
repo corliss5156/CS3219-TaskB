@@ -33,7 +33,7 @@ describe('Test s3 controller',() => {
             service.uploadFileToS3.mockImplementation(async ()=>{})
             await s3Controller.uploadFile(mockReq, mockRes)
             expect(service.uploadFileToS3).toHaveBeenCalledTimes(1)
-            expect(service.uploadFileToS3).toHaveBeenCalledWith('uploads/'.concat(mockReq.file.originalname), mockReq.file.buffer)
+            expect(service.uploadFileToS3).toHaveBeenCalledWith(mockReq.file.originalname, mockReq.file.buffer)
         })
         test('Error in uploading a file into S3', async () => {
             
