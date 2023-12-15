@@ -3,7 +3,7 @@
 ## Overview 
 This project is a NextJS frontend app that connects to an Express backend to interact with an AWS S3 bucket. 
 
-I wanted to play around a little and learn about NextJS. Clearly, because of the limited functionality of the app, I did not use much features of NextJS and the frontend can easily be accomplished with React. Added dockerfiles but I won't be going onto dockerize the application. 
+I wanted to play around a little and learn about NextJS. Clearly, because of the limited functionality of the app, I did not use much features of NextJS and the frontend can easily be accomplished with React. Added dockerfiles but I won't be going onto deploy the application. 
 
 Well anyway, it is a single page dashboard: 
 ![alt test](./images/Screenshot.png)
